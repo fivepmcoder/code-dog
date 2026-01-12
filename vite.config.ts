@@ -31,17 +31,6 @@ export default defineConfig(({ mode }) => {
             target: "modules",
             outDir: "dist",
             assetsDir: "assets"
-        },
-        css: {
-            preprocessorOptions: {
-                scss: {
-                    api: "modern",
-                    additionalData: `@use "@/assets/styles/common.scss" as *;`
-                }
-            },
-            modules: {
-                localsConvention: "dashesOnly"
-            }
         }
     };
 });
