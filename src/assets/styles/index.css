@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-gray-50 text-gray-900 antialiased;
+    }
+
+    .dark body {
+        background-color: #0a0a0b;
+        color: #f9fafb;
+    }
+
+    .dark ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .dark ::-webkit-scrollbar-track {
+        background-color: #18181b;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+        background-color: #52525b;
+        border-radius: 4px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb:hover {
+        background-color: #71717a;
+    }
+}
+
+@layer components {
+    .card {
+        @apply bg-white rounded-xl p-6 transition-all duration-200 border border-transparent;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .dark .card {
+        background-color: #1e1e21;
+        border-color: #27272a;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .card:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .dark .card:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn {
+        @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .dark .btn {
+        @apply ring-offset-gray-900;
+    }
+
+    .btn-primary {
+        @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+    }
+
+    .dark .btn-primary {
+        @apply bg-primary-600 hover:bg-primary-700;
+    }
+
+    .btn-secondary {
+        @apply bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-400 border border-gray-300;
+    }
+
+    .dark .btn-secondary {
+        background-color: #18181b;
+        color: #e4e4e7;
+        border-color: #3f3f46;
+    }
+
+    .dark .btn-secondary:hover {
+        background-color: #27272a;
+    }
+
+    .btn-danger {
+        @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+    }
+
+    .dark .btn-danger {
+        @apply bg-red-600 hover:bg-red-700;
+    }
+
+    .input {
+        @apply w-full px-4 py-2 border border-gray-300 bg-white text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all placeholder:text-gray-400;
+    }
+
+    .dark .input {
+        background-color: #18181b;
+        border-color: #3f3f46;
+        color: #f9fafb;
+    }
+
+    .dark .input::placeholder {
+        color: #71717a;
+    }
+
+    .input-error {
+        @apply border-red-500 focus:ring-red-500;
+    }
+
+    .label {
+        @apply block text-sm font-medium text-gray-700 mb-2;
+    }
+
+    .dark .label {
+        @apply text-gray-300;
+    }
+
+    .badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+
+    .badge-primary {
+        @apply bg-primary-100 text-primary-800 border border-primary-200;
+    }
+
+    .dark .badge-primary {
+        background-color: rgba(99, 102, 241, 0.2);
+        color: #c7d2fe;
+        border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .badge-success {
+        @apply bg-green-100 text-green-800 border border-green-200;
+    }
+
+    .dark .badge-success {
+        background-color: rgba(34, 197, 94, 0.2);
+        color: #86efac;
+        border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .badge-warning {
+        @apply bg-yellow-100 text-yellow-800 border border-yellow-200;
+    }
+
+    .dark .badge-warning {
+        background-color: rgba(234, 179, 8, 0.2);
+        color: #fde047;
+        border-color: rgba(234, 179, 8, 0.3);
+    }
+
+    .badge-danger {
+        @apply bg-red-100 text-red-800 border border-red-200;
+    }
+
+    .dark .badge-danger {
+        background-color: rgba(239, 68, 68, 0.2);
+        color: #fca5a5;
+        border-color: rgba(239, 68, 68, 0.3);
+    }
+}
+
+@layer utilities {
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .bg-dark-primary {
+        background-color: #0a0a0b;
+    }
+
+    .bg-dark-secondary {
+        background-color: #18181b;
+    }
+
+    .bg-dark-card {
+        background-color: #1e1e21;
+    }
+}

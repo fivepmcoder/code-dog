@@ -1,0 +1,78 @@
+{
+    // 声明为根配置，防止向上继承
+    "root": true,
+
+    // 环境配置
+    "env": {
+        "browser": true, // 浏览器全局变量
+        "node": true, // Node.js 全局变量
+        "es2021": true // 启用 ES2021 全局变量
+    },
+
+    // 继承推荐规则
+    "extends": [
+        "eslint:recommended", // ESLint 官方推荐规则
+        "plugin:@typescript-eslint/recommended", // TypeScript 推荐规则
+        "plugin:@typescript-eslint/recommended-requiring-type-checking", // 严格类型检查规则
+        "plugin:prettier/recommended" // 集成 Prettier，关闭冲突规则
+    ],
+
+    // 使用 TypeScript 解析器
+    "parser": "@typescript-eslint/parser",
+
+    // 解析器选项
+    "parserOptions": {
+        "ecmaVersion": "latest", // 支持最新 ECMAScript
+        "sourceType": "module", // 使用 ES 模块
+        "project": "./tsconfig.json" // TypeScript 项目配置文件
+    },
+
+    // 插件
+    "plugins": ["@typescript-eslint", "prettier"],
+
+    // 自定义规则
+    "rules": {
+        // ========== 代码风格 ==========
+        "quotes": ["error", "double", { "avoidEscape": true }], // 双引号，允许转义
+        "@typescript-eslint/quotes": ["error", "double"],
+        "@typescript-eslint/indent": ["error", 4], // 缩进 4 空格
+        "@typescript-eslint/semi": ["error", "always"], // 语句末尾必须分号
+        "@typescript-eslint/comma-dangle": ["error", "never"], // 多行尾随逗号
+
+        // ========== 类型安全 ==========
+        "@typescript-eslint/no-explicit-any": "error", // 禁止 any
+        "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            { "allowExpressions": true, "allowTypedFunctionExpressions": true }
+        ], // 函数必须有返回类型
+        "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "type-imports" }], // 类型导入统一风格
+
+        // ========== Promise/异步 ==========
+        "@typescript-eslint/no-floating-promises": "error", // 禁止未处理的 Promise
+        "@typescript-eslint/no-misused-promises": "error",
+        "@typescript-eslint/await-thenable": "error",
+
+        // ========== 实用规则 ==========
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+        ], // 忽略下划线开头的未使用变量
+        "import/no-cycle": "error", // 禁止循环依赖
+        "no-console": "off", // 允许 console
+        "@typescript-eslint/no-non-null-assertion": "error", // 禁止非空断言
+        "@typescript-eslint/restrict-template-expressions": "off", // 放宽模板字符串限制
+
+        // ========== Prettier ==========
+        "prettier/prettier": "error" // Prettier 格式错误报错
+    },
+
+    // 忽略文件
+    "ignorePatterns": [
+        "node_modules/**",
+        "dist/**",
+        "build/**",
+        "coverage/**",
+        "*.config.js",
+        "*.config.ts"
+    ]
+}
