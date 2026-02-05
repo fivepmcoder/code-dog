@@ -1,0 +1,22 @@
+import type { RouteRecordRaw } from "vue-router";
+
+export default [
+    {
+        path: "/",
+        component: () => import("@/layout/index.vue"),
+        children: [
+            {
+                path: "",
+                component: () => import("@/page/index/index.vue")
+            },
+            {
+                path: "repository",
+                component: () => import("@/page/repository/index.vue")
+            },
+            {
+                path: "member",
+                component: () => import("@/page/member/index.vue")
+            }
+        ]
+    }
+] as RouteRecordRaw[];

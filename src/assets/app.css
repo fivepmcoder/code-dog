@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+    --bg-page: #fafbfc;
+    --text-main: #323251;
+    --bg-card: #ffffff;
+}
+
+[data-theme="dark"] {
+    --bg-page: #090909;
+    --text-main: #e3e3e8;
+    --bg-card: #171717;
+}
+
+html,
+body,
+#app {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    min-height: 100vh;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
