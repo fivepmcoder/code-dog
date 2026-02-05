@@ -5,13 +5,18 @@
 :root {
     --bg-page: #fafbfc;
     --text-main: #323251;
-    --bg-card: #ffffff;
+    --color-card: #ffffff;
 }
 
 [data-theme="dark"] {
     --bg-page: #090909;
     --text-main: #e3e3e8;
-    --bg-card: #171717;
+    --color-card: #171717;
+}
+
+@theme {
+    --color-card: var(--color-card);
+    --color-primary: #6366f1;
 }
 
 html,
