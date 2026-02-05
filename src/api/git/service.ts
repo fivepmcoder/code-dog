@@ -1,4 +1,4 @@
-import type { RepoList } from "@/definition/git/repo";
+import type { RepoListRequest, RepoListResponse } from "@/definition/git/repo";
 
 /**
  * 代码服务接口
@@ -8,7 +8,7 @@ export interface CodeService {
      * 代码库列表
      * @returns 代码库列表
      */
-    repoList: () => Promise<RepoList[]>;
+    repoList: (data: RepoListRequest) => Promise<RepoListResponse[]>;
 
     /**
      * 代码库详情

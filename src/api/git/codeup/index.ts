@@ -1,15 +1,29 @@
 import type { CodeService } from "@/api/git/service";
-import type { RepoList } from "@/definition/git/repo";
+import type { RepoListRequest, RepoListResponse } from "@/definition/git/repo";
+import { useConfigStore } from "@/store/config";
 
 /**
  * Codeup 服务
  */
-class CodeupService implements CodeService {
+export default class CodeupService implements CodeService {
+    // codeup 的 api 基础地址
+    private baseUrl: string;
+
+    // codeup 的 api 认证 token
+    private token: string;
+
+    constructor() {
+        const useConfig = useConfigStore();
+        this.baseUrl = useConfig.getGitConfig.endpoint || "https://openapi-rdc.aliyuncs.com";
+        this.token = useConfig.getGitConfig.token;
+    }
+
     /**
      * 代码库列表
+     * @param data 代码库列表请求
      * @returns 代码库列表
      */
-    async repoList(): Promise<RepoList[]> {
+    async repoList(data: RepoListRequest): Promise<RepoListResponse[]> {
         return [];
     }
 

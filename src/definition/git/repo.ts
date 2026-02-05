@@ -1,7 +1,21 @@
 /**
- * 代码库列表
+ * 代码库列表请求
  */
-export interface RepoList {
+export interface RepoListRequest {
+    // 页码
+    page: number;
+    // 每页大小
+    size: number;
+    // 排序字段
+    orderBy?: string;
+    // 排序方式
+    sort?: string;
+}
+
+/**
+ * 代码库列表响应
+ */
+export interface RepoListResponse {
     // 代码库id
     id: string;
     // 代码库名称

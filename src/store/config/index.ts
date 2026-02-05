@@ -1,4 +1,4 @@
-import type { GitConfig, LLMConfig } from "@/definition/config";
+import type { GitConfig, LLMConfig } from "@/definition/store";
 import { defineStore } from "pinia";
 
 export const useConfigStore = defineStore("config", {

@@ -2,7 +2,7 @@
  * 代码库列表文档：https://api.aliyun.com/document/devops/2021-06-25/ListRepositories
  */
 
-import type { RepoList } from "@/definition/git/repo";
+import type { RepoListResponse } from "@/definition/git/repo";
 
 /**
  * 代码库列表请求
@@ -48,7 +48,7 @@ export interface CodeupRepoListResponse {
  * @param repo codeup代码库列表响应
  * @returns 代码库列表
  */
-export const transformCodeupRepoList = (repo: CodeupRepoListResponse): RepoList => {
+export const transformCodeupRepoList = (repo: CodeupRepoListResponse): RepoListResponse => {
     return {
         id: repo.id,
         name: repo.name,
