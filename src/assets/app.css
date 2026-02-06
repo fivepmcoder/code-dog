@@ -4,19 +4,31 @@
 
 :root {
     --bg-page: #fafbfc;
-    --text-main: #323251;
+    --text-main: #1a1b1c;
     --color-card: #ffffff;
+    --color-card-hover: #f0f0f0;
+    --color-border: #e0e0e0;
 }
 
 [data-theme="dark"] {
-    --bg-page: #090909;
-    --text-main: #e3e3e8;
-    --color-card: #171717;
+    --bg-page: #000000;
+    --text-main: #fafbfc;
+    --color-card: #1e1e1e;
+    --color-card-hover: #2a2a2a;
+    --color-border: #333333;
 }
 
 @theme {
+    --color-bg-page: var(--bg-page);
+    --color-text-main: var(--text-main);
     --color-card: var(--color-card);
-    --color-primary: #6366f1;
+    --color-card-hover: var(--color-card-hover);
+    --color-border: var(--color-border);
+    --color-primary: #7d5eff;
+    --color-info: #5d9fff;
+    --color-success: #4fd86b;
+    --color-warning: #ffc843;
+    --color-error: #ff6b6b;
 }
 
 html,

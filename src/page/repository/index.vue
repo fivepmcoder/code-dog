@@ -1,3 +1,7 @@
 <template>
-    <div>repository</div>
+    <RepositoryCard />
 </template>
+
+<script setup lang="ts">
+import RepositoryCard from "@/components/repository-card/index.vue";
+</script>

@@ -7,11 +7,11 @@ export default [
         children: [
             {
                 path: "",
-                component: () => import("@/page/index/index.vue")
+                component: () => import("@/page/repository/index.vue")
             },
             {
-                path: "repository",
-                component: () => import("@/page/repository/index.vue")
+                path: "config",
+                component: () => import("@/page/config/index.vue")
             },
             {
                 path: "member",
