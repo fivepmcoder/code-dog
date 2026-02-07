@@ -1,7 +1,7 @@
 <template>
     <div class="flex h-dvh flex-col overflow-hidden">
         <!-- 导航栏 -->
-        <nav class="top-0 z-50 container flex min-w-full shrink-0 items-center p-4.5">
+        <nav class="top-0 z-50 container flex min-w-full shrink-0 items-center p-5">
             <div class="flex h-full w-full justify-end gap-4 sm:gap-6">
                 <!-- 配置 -->
                 <button class="cursor-pointer">
@@ -42,7 +42,7 @@
         </nav>
 
         <!-- 主内容 -->
-        <main class="relative container mx-auto flex-1 overflow-auto">
+        <main class="container mx-auto flex-1 overflow-auto">
             <!-- 加载中 -->
             <Loading />
             <!-- 提示 -->
