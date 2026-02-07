@@ -1,4 +1,4 @@
-import { useConfigStore } from "@/store/config";
+import { configStore } from "@/store/config";
 import type { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
 
 /**
@@ -9,8 +9,8 @@ export const beforGuard = (
     _form: RouteLocationNormalized,
     next: NavigationGuardNext
 ) => {
-    const useConfig = useConfigStore();
-    if (!useConfig.getGitConfig.token && to.path != "/config") {
+    const config = configStore();
+    if (!config.getGitConfig.token && to.path != "/config") {
         next("/config");
         return;
     }

@@ -1,3 +1,4 @@
+import type { Toast } from "@/definition/store";
 import type {
     AxiosError,
     AxiosResponse,
@@ -10,11 +11,29 @@ import type {
  * 可以在每次请求中配置
  */
 export interface RequestConfig extends InternalAxiosRequestConfig {
+    // 是否跳过授权认证
+    skipAuth?: boolean;
+
     // 是否展示 Loading 状态
     showLoading?: boolean;
 
-    // 是否跳过授权认证
-    skipAuth?: boolean;
+    // Loading 文本
+    loadingText?: string;
+
+    // 是否展示 toast 消息
+    showToast?: boolean;
+
+    // toast 消息
+    toastMessage?: string;
+
+    // toast 类型
+    toastType?: Toast["type"];
+
+    // toast 持续时间
+    toastDuration?: number;
+
+    // 自定义 toast 标题
+    toastTitle?: string;
 }
 
 /**
@@ -102,13 +121,13 @@ export interface CreateRequestConfig extends CreateAxiosDefaults {
     debug?: boolean;
 
     // Loading 状态显示/隐藏的回调钩子
-    onShowLoading?(loading: boolean, config: RequestConfig): void;
+    onShowLoading?(loading: boolean, config?: RequestConfig): void;
 
     // 请求发送前的拦截钩子
-    onRequest?(config: RequestConfig): RequestConfig | Promise<RequestConfig>;
+    onRequest?(config?: RequestConfig): RequestConfig | Promise<RequestConfig>;
 
     // 响应成功后的回调钩子
-    onSuccess?(response: AxiosResponse, config: RequestConfig): void | Promise<void>;
+    onSuccess?(response: AxiosResponse, config?: RequestConfig): void | Promise<void>;
 
     // 响应失败的回调钩子
     onError?(error: RequestError, config?: RequestConfig): void | Promise<void>;

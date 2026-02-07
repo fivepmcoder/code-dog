@@ -1,7 +1,7 @@
 import type { GitConfig, LLMConfig } from "@/definition/store";
 import { defineStore } from "pinia";
 
-export const useConfigStore = defineStore("config", {
+export const configStore = defineStore("config", {
     state: () => ({
         // 仓库配置
         gitConfig: {

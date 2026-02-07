@@ -26,8 +26,8 @@
     --color-border: var(--color-border);
     --color-primary: #7d5eff;
     --color-info: #5d9fff;
-    --color-success: #4fd86b;
     --color-warning: #ffc843;
+    --color-success: #4fd86b;
     --color-error: #ff6b6b;
 }
 

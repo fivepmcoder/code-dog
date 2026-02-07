@@ -64,7 +64,22 @@
                     type="submit"
                     class="bg-primary mx-auto w-full max-w-xs transform cursor-pointer rounded-full px-4 py-2 font-bold text-white duration-500 hover:-translate-y-0.5 hover:shadow-xl"
                 >
-                    下一步
+                    <template v-if="disabled" class="flex items-center justify-center">
+                        <svg
+                            class="mr-2 -ml-1 inline-block h-5 w-5 animate-spin text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                class="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                        </svg>
+                        <span>处理中...</span>
+                    </template>
+                    <template class="text-center" v-else> 下一步 </template>
                 </button>
             </form>
         </div>
@@ -72,11 +87,11 @@
 </template>
 
 <script setup lang="ts">
-import { useConfigStore } from "@/store/config";
+import { configStore } from "@/store/config";
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
 
-const useConfig = useConfigStore();
+const config = configStore();
 
 const router = useRouter();
 
@@ -85,9 +100,9 @@ const disabled = ref(false);
 
 const configData = reactive({
     type: "codeup" as "codeup" | "github",
-    token: useConfig.gitConfig.token || "",
-    organization: useConfig.gitConfig.organization || "",
-    endpoint: useConfig.gitConfig.endpoint || "https://openapi-rdc.aliyuncs.com"
+    token: config.gitConfig.token || "",
+    organization: config.gitConfig.organization || "",
+    endpoint: config.gitConfig.endpoint || "https://openapi-rdc.aliyuncs.com"
 });
 const errors = reactive({
     token: "",
@@ -113,7 +128,7 @@ const submitConfig = () => {
         return;
     }
 
-    useConfig.setGitConfig({
+    config.setGitConfig({
         ...configData
     });
 

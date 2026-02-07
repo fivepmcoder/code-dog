@@ -16,6 +16,10 @@ export default [
             {
                 path: "member",
                 component: () => import("@/page/member/index.vue")
+            },
+            {
+                path: "test",
+                component: () => import("@/page/test/index.vue")
             }
         ]
     }

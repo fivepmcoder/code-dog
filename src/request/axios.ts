@@ -12,7 +12,7 @@ import axios, {
 export const createAxiosInstance = (config: CreateRequestConfig): AxiosInstance => {
     const {
         baseURL,
-        tokenHeader = "Authorization",
+        // tokenHeader = "Authorization",
         contentType = "application/json",
         debug = false,
         onShowLoading,
@@ -31,12 +31,19 @@ export const createAxiosInstance = (config: CreateRequestConfig): AxiosInstance 
         ...otherConfig
     });
 
+    // 停止 Loading
+    const stopLoading = (requestConfig: RequestConfig | undefined) => {
+        if (requestConfig && requestConfig.showLoading !== false && onShowLoading) {
+            onShowLoading(false, requestConfig);
+        }
+    };
+
     // 请求拦截器
     instance.interceptors.request.use(async (axiosConfig: InternalAxiosRequestConfig) => {
         const requestConfig = axiosConfig as RequestConfig;
 
         // Loading 开始
-        if (requestConfig.showLoading && onShowLoading) {
+        if (requestConfig.showLoading !== false && onShowLoading) {
             onShowLoading(true, requestConfig);
         }
 
@@ -56,7 +63,7 @@ export const createAxiosInstance = (config: CreateRequestConfig): AxiosInstance 
             console.log("[Request]", {
                 method: finalConfig.method && finalConfig.method.toUpperCase(),
                 url: finalConfig.url,
-                data: finalConfig.data
+                data: finalConfig.data as unknown
             });
         }
 
@@ -69,9 +76,7 @@ export const createAxiosInstance = (config: CreateRequestConfig): AxiosInstance 
             const requestConfig = response.config as RequestConfig;
 
             // Loading 结束
-            if (requestConfig.showLoading && onShowLoading) {
-                onShowLoading(false, requestConfig);
-            }
+            stopLoading(requestConfig);
 
             // 调用成功钩子
             if (onSuccess) {
@@ -87,7 +92,7 @@ export const createAxiosInstance = (config: CreateRequestConfig): AxiosInstance 
             if (debug) {
                 console.log("[Response]", {
                     status: response.status,
-                    data: response.data
+                    data: response.data as unknown
                 });
             }
 
@@ -97,9 +102,7 @@ export const createAxiosInstance = (config: CreateRequestConfig): AxiosInstance 
             const requestConfig = error.config as RequestConfig | undefined;
 
             // Loading 结束
-            if (requestConfig && requestConfig.showLoading && onShowLoading) {
-                onShowLoading(false, requestConfig);
-            }
+            stopLoading(requestConfig);
 
             // 标准化错误
             const requestError: RequestError = {
