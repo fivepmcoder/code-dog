@@ -1,6 +1,6 @@
 <template>
     <div class="text-main flex h-full items-center justify-center">
-        <div class="bg-card w-2/4 min-w-36 rounded-lg p-8 shadow-xl">
+        <div class="bg-card w-auto max-w-2xl rounded-lg p-8 shadow-xl">
             <h2 class="mb-6 pb-10 text-center text-2xl font-bold">云效配置项</h2>
             <form @submit.prevent="submitConfig" class="flex flex-col gap-6">
                 <div class="space-y-1">

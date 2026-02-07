@@ -42,7 +42,7 @@
         </nav>
 
         <!-- 主内容 -->
-        <main class="relative container mx-auto flex-1 overflow-hidden">
+        <main class="relative container mx-auto flex-1 overflow-auto">
             <!-- 加载中 -->
             <Loading />
             <!-- 提示 -->

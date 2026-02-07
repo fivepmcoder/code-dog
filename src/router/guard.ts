@@ -10,7 +10,7 @@ export const beforGuard = (
     next: NavigationGuardNext
 ) => {
     const config = configStore();
-    if (!config.getGitConfig.token && to.path != "/config") {
+    if (!config.getGitConfig.token && to.path != "/config" && to.path != "/test") {
         next("/config");
         return;
     }

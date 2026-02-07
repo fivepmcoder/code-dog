@@ -41,3 +41,22 @@ body,
         background-color 0.3s ease,
         color 0.3s ease;
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 3px;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+}
