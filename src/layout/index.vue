@@ -1,66 +1,87 @@
 <template>
-    <div class="flex h-dvh flex-col overflow-hidden">
-        <!-- 导航栏 -->
-        <nav class="top-0 z-50 container flex min-w-full shrink-0 items-center p-5">
-            <div class="flex h-full w-full justify-end gap-4 sm:gap-6">
-                <!-- 配置 -->
-                <button class="cursor-pointer">
-                    <svg
-                        class="h-6 w-6 fill-current"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                    >
-                        <path
-                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"
-                        />
-                        <path
-                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"
-                        />
-                    </svg>
-                </button>
-                <!-- 主题 -->
-                <button class="cursor-pointer" @click="theme.toggleTheme">
-                    <svg
-                        class="h-6 w-6 fill-current"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                    >
-                        <!-- 太阳图标：当不是暗黑模式时显示 -->
-                        <path
-                            v-if="!theme.isDark"
-                            d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"
-                        />
-
-                        <!-- 月亮图标：当是暗黑模式时显示 -->
-                        <path
-                            v-else
-                            d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"
-                        />
-                    </svg>
-                </button>
-            </div>
-        </nav>
-
-        <!-- 主内容 -->
-        <main class="container mx-auto flex-1 overflow-auto">
-            <!-- 加载中 -->
-            <Loading />
-            <!-- 提示 -->
-            <Toast />
-            <!-- 路由视图 -->
-            <router-view />
-        </main>
+    <div class="flex h-dvh overflow-hidden">
+        <!-- 侧边栏 -->
+        <div class="flex flex-1 flex-col overflow-hidden">
+            <!-- 导航栏 -->
+            <Header class="shrink-0" @toggle-theme="themeToggle" />
+            <!-- 主内容 -->
+            <Main class="flex-1" />
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { themeStore } from "@/store/theme/index";
-import { onMounted } from "vue";
-import Loading from "@/components/loading/index.vue";
-import Toast from "@/components/toast/index.vue";
+import { nextTick, onMounted } from "vue";
+import Header from "@/layout/header/index.vue";
+import Main from "@/layout/main/index.vue";
 
+// 初始化主题
 const theme = themeStore();
 onMounted(() => {
     theme.initTheme();
 });
+
+/**
+ * 计算从点击位置到屏幕四角的最大距离
+ * 确保圆形动画能够覆盖整个屏幕
+ * @param x 点击x坐标
+ * @param y 点击y坐标
+ */
+const computeMaxRadios = (x: number, y: number): number => {
+    const maxX = Math.max(x, window.innerWidth - x);
+    const maxY = Math.max(y, window.innerHeight - y);
+    return Math.hypot(maxX, maxY);
+};
+
+/**
+ * 主题切换逻辑
+ * 使用 View Transitions API 实现从点击位置扩散的动画效果
+ * @param event 点击事件对象
+ */
+const themeToggle = async (event: MouseEvent) => {
+    // 检查浏览器是否支持
+    const isSupported =
+        "startViewTransition" in document &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // 不支持的浏览器直接切换
+    if (!isSupported) {
+        theme.toggleTheme();
+        return;
+    }
+
+    // 获取点击位置
+    const x = event.clientX;
+    const y = event.clientY;
+    // 计算覆盖全屏所需的最大半径
+    const endRadius = computeMaxRadios(x, y);
+
+    // 启动视图过渡
+    const transition = (document as any).startViewTransition(async () => {
+        // 在回调中执行实际的主题切换
+        theme.toggleTheme();
+        await nextTick();
+    });
+    // 等待过渡完成
+    await transition.ready;
+
+    // 定义 clip-path 动画关键帧
+    // 起始：点击位置的 0 像素圆
+    // 结束：覆盖全屏的大圆
+    const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`];
+
+    // 应用动画到对应的伪元素
+    document.documentElement.animate(
+        {
+            clipPath: theme.isDark ? [...clipPath].reverse() : clipPath
+        },
+        {
+            duration: 600,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            pseudoElement: theme.isDark
+                ? "::view-transition-old(root)"
+                : "::view-transition-new(root)"
+        }
+    );
+};
 </script>

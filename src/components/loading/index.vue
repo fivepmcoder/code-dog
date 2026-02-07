@@ -3,7 +3,7 @@
         <Transition name="loading">
             <div
                 v-if="visible"
-                class="text-main fixed inset-0 z-40 flex flex-col items-center justify-center"
+                class="text-main fixed inset-0 z-20 flex flex-col items-center justify-center"
             >
                 <svg
                     class="h-10 w-10 animate-spin"
