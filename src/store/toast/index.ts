@@ -55,7 +55,7 @@ export const toastStore = defineStore("toast", {
             const completeToast: Toast = {
                 ...toast,
                 id,
-                duration: toast.duration || 3000
+                duration: toast.duration
             };
             this.toasts.push(completeToast);
             if (completeToast.duration && completeToast.duration > 0) {
