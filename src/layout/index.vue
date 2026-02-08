@@ -1,11 +1,12 @@
 <template>
     <div class="flex h-dvh overflow-hidden">
+        <!-- <layout-sidebar class="shrink-0" /> -->
         <!-- 侧边栏 -->
         <div class="flex flex-1 flex-col overflow-hidden">
             <!-- 导航栏 -->
-            <Header class="shrink-0" @toggle-theme="themeToggle" />
+            <layout-header class="shrink-0" @toggle-theme="themeToggle" />
             <!-- 主内容 -->
-            <Main class="flex-1" />
+            <layout-main class="flex-1" />
         </div>
     </div>
 </template>
@@ -13,8 +14,9 @@
 <script setup lang="ts">
 import { themeStore } from "@/store/theme/index";
 import { nextTick, onMounted } from "vue";
-import Header from "@/layout/header/index.vue";
-import Main from "@/layout/main/index.vue";
+// import LayoutSidebar from "@/layout/sidebar/index.vue";
+import LayoutHeader from "@/layout/header/index.vue";
+import LayoutMain from "@/layout/main/index.vue";
 
 // 初始化主题
 const theme = themeStore();
