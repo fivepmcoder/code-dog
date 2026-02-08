@@ -8,7 +8,7 @@ export const toastStore = defineStore("toast", {
 
     actions: {
         // 普通信息
-        info(message: string, duration: number = 3000, title: string = "Info"): string {
+        info(message: string, duration: number = 3000, title?: string): string {
             return this.showToast({
                 type: "info",
                 title: title,
@@ -18,7 +18,7 @@ export const toastStore = defineStore("toast", {
         },
 
         // 警告信息
-        warning(message: string, duration: number = 3000, title: string = "Warning"): string {
+        warning(message: string, duration: number = 3000, title?: string): string {
             return this.showToast({
                 type: "warning",
                 title: title,
@@ -28,7 +28,7 @@ export const toastStore = defineStore("toast", {
         },
 
         // 成功信息
-        success(message: string, duration: number = 3000, title: string = "Success"): string {
+        success(message: string, duration: number = 3000, title?: string): string {
             return this.showToast({
                 type: "success",
                 title: title,
@@ -38,7 +38,7 @@ export const toastStore = defineStore("toast", {
         },
 
         // 错误信息
-        error(message: string, duration: number = 3000, title: string = "Error"): string {
+        error(message: string, duration: number = 3000, title?: string): string {
             return this.showToast({
                 type: "error",
                 title: title,
