@@ -10,8 +10,12 @@ export default [
                 component: () => import("@/page/repository/index.vue")
             },
             {
-                path: "config",
-                component: () => import("@/page/config/index.vue")
+                path: "codeup",
+                component: () => import("@/page/codeup/index.vue")
+            },
+            {
+                path: "llm",
+                component: () => import("@/page/llm/index.vue")
             },
             {
                 path: "member",

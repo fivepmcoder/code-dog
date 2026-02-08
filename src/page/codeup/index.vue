@@ -1,5 +1,5 @@
 <template>
-    <div class="text-main flex h-full items-center justify-center">
+    <div class="text-main relative flex h-full items-center justify-center">
         <div class="bg-card w-auto max-w-2xl rounded-lg p-8 shadow-xl">
             <h2 class="mb-6 pb-10 text-center text-2xl font-bold">云效配置项</h2>
             <form @submit.prevent="submitConfig" class="flex flex-col gap-6">
@@ -62,7 +62,7 @@
                 <button
                     :disabled
                     type="submit"
-                    class="bg-primary mx-auto w-full max-w-xs transform cursor-pointer rounded-full px-4 py-2 font-bold text-white duration-500 hover:-translate-y-0.5 hover:shadow-xl"
+                    class="bg-primary mx-auto w-full max-w-xs transform cursor-pointer rounded-full px-4 py-2 font-bold tracking-widest text-white duration-500 hover:-translate-y-0.5 hover:shadow-xl"
                 >
                     <template v-if="disabled" class="flex items-center justify-center">
                         <svg
@@ -79,9 +79,35 @@
                         </svg>
                         <span>处理中...</span>
                     </template>
-                    <template class="text-center" v-else> 下一步 </template>
+                    <template class="text-center" v-else>保存</template>
                 </button>
             </form>
+        </div>
+        <!-- 保存之后选项卡是否跳过LLM配置 -->
+        <div
+            v-if="nextAction"
+            class="absolute inset-0 z-10 flex items-center justify-center bg-black/0"
+        >
+            <div class="bg-card animate-in fade-in zoom-in w-full max-w-sm rounded-2xl p-6">
+                <h3 class="mb-4 text-center text-xl font-bold">保存成功</h3>
+                <p class="mb-8 text-center text-gray-400">
+                    配置已生效。是否现在去配置 LLM 模型以开启更多功能？
+                </p>
+                <div class="flex justify-center gap-4">
+                    <button
+                        @click="handleNext(false)"
+                        class="flex-1 cursor-pointer rounded-xl border border-gray-300 py-2 font-medium hover:opacity-90"
+                    >
+                        稍后配置
+                    </button>
+                    <button
+                        @click="handleNext(true)"
+                        class="bg-primary flex-1 cursor-pointer rounded-xl py-2 font-bold text-white hover:opacity-90"
+                    >
+                        立即配置
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -97,6 +123,7 @@ const router = useRouter();
 
 const showToken = ref(false);
 const disabled = ref(false);
+const nextAction = ref(false);
 
 const configData = reactive({
     type: "codeup" as "codeup" | "github",
@@ -132,6 +159,16 @@ const submitConfig = () => {
         ...configData
     });
 
-    router.push("/");
+    nextAction.value = true;
+};
+
+// 下一步操作是跳过LLM配置，直接跳转到首页，还是进行LLM配置
+const handleNext = (isSkip: boolean) => {
+    // 跳过LLM配置，直接跳转到首页
+    if (isSkip !== true) {
+        router.push("/");
+        return;
+    }
+    router.push("/llm");
 };
 </script>
